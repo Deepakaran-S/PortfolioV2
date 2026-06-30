@@ -1,0 +1,28 @@
+﻿/* SPACING & LAYOUT */
+:root {
+  --space-1: 4px;
+  --space-2: 6px;
+  --space-3: 8px;
+  --space-4: 12px;
+  --space-5: 16px;
+  --space-6: 20px;
+  --space-7: 24px;
+  --space-8: 32px;
+  --space-9: 40px;
+  --space-10: 56px;
+  --space-12: 80px;
+
+  --bento-gap: 14px;
+  --tile-pad: 20px;
+  --tile-pad-lg: 28px;
+
+  --measure: 1140px;
+  --measure-narrow: 820px;
+  --measure-prose: 540px;
+  --section-padding-y: 5rem;
+  --section-padding-x: 1.5rem;
+  --gutter: 1.5rem;
+
+  --container: var(--measure);
+  --section-pad: var(--section-padding-y) var(--section-padding-x);
+}

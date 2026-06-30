@@ -1,0 +1,48 @@
+﻿/* TYPOGRAPHY — Space Grotesk (display), Hanken Grotesk (body), Space Mono (meta) */
+:root {
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Space Mono', 'SF Mono', ui-monospace, monospace;
+
+  --text-2xs: 10.5px;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-md: 15px;
+  --text-lg: 16px;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2.25rem;
+  --text-display-sm: clamp(1.6rem, 3vw, 2.2rem);
+  --text-display-md: clamp(2rem, 4vw, 3rem);
+  --text-display-lg: clamp(2.25rem, 5vw, 3.75rem);
+  --text-display-xl: clamp(2.75rem, 7vw, 5.5rem);
+
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --leading-tight: 1.0;
+  --leading-snug: 1.12;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+  --leading-loose: 1.75;
+
+  --tracking-tightest: -0.03em;
+  --tracking-tight: -0.02em;
+  --tracking-snug: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-wider: 0.04em;
+  --tracking-eyebrow: 0.14em;
+  --tracking-widest: 0.16em;
+
+  --type-hero: var(--weight-bold) var(--text-display-xl)/var(--leading-tight) var(--font-display);
+  --type-h2: var(--weight-bold) var(--text-display-md)/var(--leading-snug) var(--font-display);
+  --type-card-title: var(--weight-bold) var(--text-xl)/1.1 var(--font-display);
+  --type-body: var(--weight-normal) var(--text-md)/var(--leading-relaxed) var(--font-sans);
+  --type-eyebrow: var(--weight-normal) var(--text-xs)/1 var(--font-mono);
+  --type-mono: var(--weight-normal) var(--text-xs)/1 var(--font-mono);
+}

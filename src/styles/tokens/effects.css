@@ -1,0 +1,60 @@
+﻿/* EFFECTS — glassmorphism, lime mesh, radii, shadows, helpers */
+:root {
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-2xl: 36px;
+  --radius-full: 999px;
+
+  --shadow-none: none;
+  --shadow-sm: 0 4px 14px rgba(30,40,15,0.05);
+  --shadow-md: 0 12px 32px -8px rgba(30,40,15,0.10);
+  --shadow-lg: 0 30px 70px -20px rgba(0,0,0,0.30);
+  --shadow-glass: var(--glass-shadow);
+  --shadow-accent: 0 0 40px var(--accent-glow);
+
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 0.18s;
+  --duration: 0.24s;
+  --duration-slow: 0.4s;
+  --transition-base: all var(--duration) var(--ease);
+
+  --blur-glass: blur(var(--glass-blur));
+  --blur-nav: blur(16px);
+
+  --grain-url: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-opacity: 0.03;
+}
+
+.glass {
+  background: var(--glass-fill);
+  -webkit-backdrop-filter: var(--blur-glass);
+  backdrop-filter: var(--blur-glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+}
+
+.mesh-field { position: relative; overflow: hidden; }
+.mesh-field::before,
+.mesh-field::after,
+.mesh-field > .mesh-blob {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(52px);
+  opacity: var(--mesh-opacity);
+  pointer-events: none;
+  z-index: 0;
+}
+.mesh-field::before { width: 40%; height: 55%; top: -12%; left: -8%;  background: var(--mesh-1); }
+.mesh-field::after  { width: 42%; height: 58%; bottom: -14%; right: -8%; background: var(--mesh-2); }
+
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes float-soft {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(0, -8px); }
+}

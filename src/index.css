@@ -1,0 +1,49 @@
+﻿/* ===== Deepakaran Portfolio DS — global entry ===== */
+@import "./styles/tokens/fonts.css";
+@import "tailwindcss";
+@import "./styles/tokens/colors.css";
+@import "./styles/tokens/typography.css";
+@import "./styles/tokens/spacing.css";
+@import "./styles/tokens/effects.css";
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--surface-base);
+  color: var(--ink-body);
+  overflow-x: hidden;
+  transition: background var(--duration-slow) var(--ease), color var(--duration-slow) var(--ease);
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--surface-sunken); }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 999px; }
+
+a { color: inherit; }
+a:hover { color: var(--accent); }
+
+/* ===== Freelance section ===== */
+@keyframes fl-pulse {
+  0%   { box-shadow: 0 0 0 0 var(--accent-soft); }
+  70%  { box-shadow: 0 0 0 8px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+@media (max-width: 720px) {
+  .fl-caption { flex-direction: column !important; align-items: flex-start !important; }
+}
+
+/* ===== Responsive bento collapse ===== */
+@media (max-width: 880px) {
+  .bento-hero { grid-template-columns: 1fr 1fr !important; }
+  .bento-hero > .span-2,
+  .bento-hero > .span-3 { grid-column: span 2 !important; }
+  .grid-2 { grid-template-columns: 1fr !important; }
+  .exp-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+}
+@media (max-width: 560px) {
+  .bento-hero { grid-template-columns: 1fr !important; }
+  .bento-hero > .span-2,
+  .bento-hero > .span-3 { grid-column: span 1 !important; }
+  .nav-links a, .nav-clock { display: none !important; }
+}
