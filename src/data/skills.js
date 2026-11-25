@@ -1,4 +1,3 @@
-﻿/* Skills constellation data — green-world group colors */
 export const SKILLS = [
   { name: "React", x: 52, y: 22, size: 18, group: "frontend" },
   { name: "TypeScript", x: 75, y: 35, size: 15, group: "frontend" },
@@ -15,12 +14,14 @@ export const SKILLS = [
   { name: "Multi-tenant", x: 8, y: 52, size: 11, group: "concepts" },
   { name: "Git", x: 35, y: 15, size: 12, group: "tools" },
   { name: "Postman", x: 62, y: 12, size: 11, group: "tools" },
+  { name: "Python", x: 25, y: 56, size: 13, group: "backend" },
+  { name: "MySQL", x: 80, y: 88, size: 12, group: "db" },
 ];
 
 export const CONNECTIONS = [
   [0, 1], [0, 2], [0, 3], [0, 4], [4, 5], [4, 6], [4, 7],
   [5, 8], [7, 9], [1, 10], [10, 11], [2, 12], [0, 13], [13, 14],
-  [5, 9], [3, 12], [6, 7], [8, 9],
+  [5, 9], [3, 12], [6, 7], [8, 9], [15, 5], [16, 6],
 ];
 
 export const GROUP_COLORS = {
@@ -37,4 +38,24 @@ export const GROUP_LABELS = {
   db: "Database",
   concepts: "Concepts",
   tools: "Tools",
+};
+
+export const EVIDENCE = {
+  "React": ["VoltTask", "CourseHub", "ERP Platform", "Trash-to-Treasure", "Blog Website"],
+  "TypeScript": ["VoltTask"],
+  "Tailwind": ["CourseHub", "Trash-to-Treasure"],
+  "React Native": ["Ride-Hailing App"],
+  "Node.js": ["CourseHub", "Ride-Hailing App", "ERP Platform", "Blog Website", "CineBook API"],
+  "FastAPI": ["VoltTask"],
+  "Express": ["CourseHub", "Blog Website", "CineBook API"],
+  "REST APIs": ["VoltTask", "Blog Website", "CineBook API"],
+  "PostgreSQL": ["VoltTask", "ERP Platform"],
+  "MongoDB": ["CourseHub", "Blog Website"],
+  "JWT / Auth": ["VoltTask", "ERP Platform", "Blog Website", "CineBook API"],
+  "RBAC": ["VoltTask", "CourseHub", "ERP Platform", "Blog Website"],
+  "Multi-tenant": ["VoltTask"],
+  "Git": ["Every project"],
+  "Postman": [],
+  "Python": ["VoltTask"],
+  "MySQL": ["CineBook API"],
 };

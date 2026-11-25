@@ -1,16 +1,37 @@
-# React + Vite
+# Deepakaran S — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio built with React 19, Vite and Tailwind CSS v4.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Bento-style sections: hero, about, projects, skills constellation, experience, freelance, contact
+- Experience duration calculated from the career start date in `src/data/profile.js`
+- Command palette (`Ctrl/Cmd + K`) for navigation, resume, email and theme actions
+- Recruiter view: a condensed, scannable version of the site
+- Skills constellation shows which projects each technology was used in
+- Dark and light themes
 
-## React Compiler
+## Getting started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+cp .env.example .env
+npm run dev
+```
 
-## Expanding the ESLint configuration
+## Configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `src/data/profile.js` — name, links, career start date, highlights
+- `src/data/projects.js` — projects (`private: true` shows a private badge instead of a repo link)
+- `src/data/skills.js` — skills, connections and per-skill project evidence
+- `public/resume.pdf` — add this file to enable the resume buttons automatically
+- `.env` — EmailJS keys for the contact form
+
+## Scripts
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Production build |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Run ESLint |

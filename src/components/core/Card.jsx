@@ -1,4 +1,5 @@
-﻿import React from "react";
+import { useState } from "react";
+
 
 /** Card — frosted glass panel; lifts on hover, border picks up the accent. */
 export function Card({
@@ -9,7 +10,7 @@ export function Card({
   style = {},
   ...rest
 }) {
-  const [hover, setHover] = React.useState(false);
+  const [hover, setHover] = useState(false);
   return (
     <div
       onMouseEnter={() => hoverable && setHover(true)}

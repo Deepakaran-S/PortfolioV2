@@ -1,6 +1,6 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Eyebrow } from "../core";
-import { SKILLS, CONNECTIONS, GROUP_COLORS, GROUP_LABELS } from "../../data/skills";
+import { SKILLS, CONNECTIONS, GROUP_COLORS, GROUP_LABELS, EVIDENCE } from "../../data/skills";
 
 export default function Skills() {
   const [hovered, setHovered] = useState(null);
@@ -48,7 +48,7 @@ export default function Skills() {
               const isH = hovered === i;
               const c = GROUP_COLORS[s.group];
               return (
-                <g key={i} onMouseEnter={() => setHovered(i)} onMouseLeave={() => setHovered(null)} style={{ cursor: "pointer" }}>
+                <g key={i} onMouseEnter={() => setHovered(i)} onMouseLeave={() => setHovered(null)} onClick={() => setHovered(i)} style={{ cursor: "pointer" }}>
                   {isH && <circle cx={s.cx} cy={s.cy} r={s.size + 8} fill={c} opacity={0.1} />}
                   <circle cx={s.cx} cy={s.cy} r={isH ? s.size + 2 : s.size} fill={isH ? c : "var(--surface-chip)"} stroke={c} strokeWidth={isH ? 1.5 : 1} style={{ transition: "all .2s" }} />
                   <text x={s.cx} y={s.cy + 1} textAnchor="middle" dominantBaseline="middle" fontSize={isH ? 9 : 8}
@@ -61,6 +61,11 @@ export default function Skills() {
             <div style={{ position: "absolute", bottom: 16, left: 16, background: "var(--glass-fill-strong)", backdropFilter: "var(--blur-glass)", WebkitBackdropFilter: "var(--blur-glass)", border: `1px solid ${GROUP_COLORS[SKILLS[hovered].group]}55`, borderRadius: "var(--radius-md)", padding: "10px 16px" }}>
               <div style={{ fontSize: 13.5, color: "var(--ink-bright)", fontWeight: 600 }}>{SKILLS[hovered].name}</div>
               <div style={{ fontFamily: "var(--font-mono)", fontSize: 10.5, color: GROUP_COLORS[SKILLS[hovered].group], marginTop: 3, textTransform: "uppercase", letterSpacing: "0.1em" }}>{GROUP_LABELS[SKILLS[hovered].group]}</div>
+              {EVIDENCE[SKILLS[hovered].name]?.length > 0 && (
+                <div style={{ fontSize: 12, color: "var(--ink-soft)", marginTop: 8, maxWidth: 260, lineHeight: 1.5 }}>
+                  Used in {EVIDENCE[SKILLS[hovered].name].join(", ")}
+                </div>
+              )}
             </div>
           )}
         </div>

@@ -1,4 +1,5 @@
-﻿import React from "react";
+import { useRef, useState } from "react";
+import { canUsePointerEffects } from "../../lib/motion";
 
 /**
  * Tile — the signature bento building block. Glass card with built-in
@@ -17,7 +18,15 @@ export function Tile({
   style = {},
   ...rest
 }) {
-  const [hover, setHover] = React.useState(false);
+  const [hover, setHover] = useState(false);
+  const spotRef = useRef(null);
+
+  const onMove = (e) => {
+    if (!hoverable || !spotRef.current || !canUsePointerEffects()) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    spotRef.current.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    spotRef.current.style.setProperty("--my", `${e.clientY - r.top}px`);
+  };
 
   const tones = {
     glass: {
@@ -48,6 +57,7 @@ export function Tile({
       className={merged || undefined}
       onMouseEnter={() => hoverable && setHover(true)}
       onMouseLeave={() => hoverable && setHover(false)}
+      onMouseMove={onMove}
       style={{
         gridColumn: span > 1 ? `span ${span}` : undefined,
         display: "flex",
@@ -65,6 +75,17 @@ export function Tile({
       }}
       {...rest}
     >
+      {hoverable && tone === "glass" && (
+        <div
+          ref={spotRef}
+          aria-hidden="true"
+          style={{
+            position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0,
+            opacity: hover ? 1 : 0, transition: "opacity .3s",
+            background: "radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), var(--accent-soft), transparent 70%)",
+          }}
+        />
+      )}
       {children}
     </div>
   );

@@ -1,17 +1,9 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Logo from "./Logo";
 
-export default function Nav() {
+export default function Nav({ theme, onToggleTheme, recruiter, onToggleRecruiter, onOpenPalette }) {
   const [scrolled, setScrolled] = useState(false);
   const [time, setTime] = useState("");
-  const [theme, setTheme] = useState(
-    () => document.documentElement.dataset.theme || "dark"
-  );
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-  }, [theme]);
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
@@ -47,7 +39,7 @@ export default function Nav() {
         </span>
       </span>
       <div className="nav-links" style={{ display: "flex", alignItems: "center", gap: 22 }}>
-        {["About", "Projects", "Skills", "Freelance", "Contact"].map((s) => (
+        {!recruiter && ["About", "Projects", "Skills", "Freelance", "Contact"].map((s) => (
           <a key={s} href={`#${s.toLowerCase()}`} style={{
             fontSize: 14, color: "var(--ink-muted)", textDecoration: "none",
             letterSpacing: "0.01em", fontWeight: 500, transition: "color .2s",
@@ -55,7 +47,26 @@ export default function Nav() {
         ))}
         <span className="nav-clock" style={{ fontSize: 12, color: "var(--ink-faint)", fontFamily: "var(--font-mono)" }}>{time}</span>
         <button
-          onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
+          onClick={onToggleRecruiter}
+          aria-pressed={recruiter}
+          style={{
+            height: 34, padding: "0 14px", borderRadius: "var(--radius-full)", cursor: "pointer", fontSize: 12.5, fontWeight: 600,
+            border: `1px solid ${recruiter ? "var(--accent)" : "var(--border-strong)"}`,
+            background: recruiter ? "var(--accent)" : "var(--surface-chip)",
+            color: recruiter ? "var(--accent-contrast)" : "var(--ink-strong)", whiteSpace: "nowrap",
+          }}
+        >{recruiter ? "Full site" : "Recruiter view"}</button>
+        <button
+          onClick={onOpenPalette}
+          aria-label="Open command palette"
+          className="nav-clock"
+          style={{
+            height: 34, padding: "0 12px", borderRadius: "var(--radius-full)", cursor: "pointer", fontSize: 12, fontFamily: "var(--font-mono)",
+            border: "1px solid var(--border-strong)", background: "var(--surface-chip)", color: "var(--ink-muted)", whiteSpace: "nowrap",
+          }}
+        >Ctrl K</button>
+        <button
+          onClick={onToggleTheme}
           aria-label="Toggle theme"
           style={{
             width: 34, height: 34, borderRadius: "var(--radius-full)",

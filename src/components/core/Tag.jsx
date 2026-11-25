@@ -1,4 +1,3 @@
-﻿import React from "react";
 
 /** Tag — "stack" pill (default) or colored uppercase "category" cap. */
 export function Tag({

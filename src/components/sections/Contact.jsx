@@ -1,6 +1,7 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { SectionHeading, Input, Button, Badge } from "../core";
+import { PROFILE } from "../../data/profile";
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -24,9 +25,9 @@ const IconMail = () => (
 );
 
 const SOCIALS = [
-  { label: "GitHub", href: "https://github.com/Deepakaran-S", Icon: IconGitHub },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/deepakaran", Icon: IconLinkedIn },
-  { label: "Email", href: "mailto:deepakarans2003@gmail.com", Icon: IconMail },
+  { label: "GitHub", href: PROFILE.github, Icon: IconGitHub },
+  { label: "LinkedIn", href: PROFILE.linkedin, Icon: IconLinkedIn },
+  { label: "Email", href: `mailto:${PROFILE.email}`, Icon: IconMail },
 ];
 
 function SocialButton({ label, href, Icon }) {

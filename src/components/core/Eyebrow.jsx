@@ -1,4 +1,3 @@
-﻿import React from "react";
 
 /** Eyebrow — Space Mono uppercase wide-tracked label, optional leading rule. */
 export function Eyebrow({

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Eyebrow, Tile, Tag, Button } from "../core";
 import { PROJECTS } from "../../data/projects";
+import { getCaseStudyForProject } from "../../data/caseStudies";
 
 const linkStyle = { fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--ink-muted)", textDecoration: "none", border: "1px solid var(--border-strong)", borderRadius: "var(--radius-full)", padding: "4px 10px", whiteSpace: "nowrap" };
 
-function GithubLinks({ github }) {
-  if (!github) return null;
+function GithubLinks({ github, isPrivate }) {
+  if (!github) return isPrivate ? <Tag>Private · client work</Tag> : null;
   const links = Array.isArray(github)
     ? github
     : [{ label: "GitHub", url: github }];
@@ -15,6 +16,8 @@ function GithubLinks({ github }) {
 }
 
 function ProjectCard({ p }) {
+  const study = getCaseStudyForProject(p.id);
+
   return (
     <Tile accent={p.color} style={{ gap: 12 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
@@ -23,10 +26,23 @@ function ProjectCard({ p }) {
           <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.3rem", color: "var(--ink-bright)", fontWeight: 700, margin: "6px 0 0", letterSpacing: "-0.02em" }}>{p.name}</h3>
         </div>
         <div style={{ display: "flex", gap: 7, flexWrap: "wrap", justifyContent: "flex-end" }}>
-          <GithubLinks github={p.github} />
+          <GithubLinks github={p.github} isPrivate={p.private} />
         </div>
       </div>
       <p style={{ fontSize: 13.5, color: "var(--ink-soft)", lineHeight: 1.6, margin: 0 }}>{p.desc}</p>
+      {study && (
+        <>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 18px" }}>
+            {study.metrics.slice(0, 3).map((m) => (
+              <div key={m.label} style={{ display: "flex", alignItems: "baseline", gap: 6 }}>
+                <span style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", fontWeight: 700, color: "var(--ink-bright)" }}>{m.figure}</span>
+                <span style={{ fontSize: 11.5, color: "var(--ink-faint)" }}>{m.label}</span>
+              </div>
+            ))}
+          </div>
+          <a href={`#/case/${study.slug}`} style={{ fontFamily: "var(--font-mono)", fontSize: 12, color: "var(--accent)", textDecoration: "none", fontWeight: 600 }}>Read the case study →</a>
+        </>
+      )}
       <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginTop: "auto" }}>
         {p.stack.map((s) => <Tag key={s}>{s}</Tag>)}
       </div>

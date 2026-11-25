@@ -1,4 +1,3 @@
-﻿import React from "react";
 import { Eyebrow } from "./Eyebrow.jsx";
 
 /** SectionHeading — eyebrow + Space Grotesk headline that opens each section. */

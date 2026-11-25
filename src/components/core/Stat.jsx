@@ -1,6 +1,7 @@
-﻿import React from "react";
 
 /** Stat — large Space Grotesk figure over a muted label. */
+import { CountUp } from "./CountUp.jsx";
+
 export function Stat({ figure, label, color = "var(--text-heading)", style = {}, ...rest }) {
   return (
     <div style={style} {...rest}>
@@ -12,7 +13,7 @@ export function Stat({ figure, label, color = "var(--text-heading)", style = {},
         color,
         lineHeight: 1,
       }}>
-        {figure}
+        <CountUp value={figure} />
       </div>
       <div style={{
         fontFamily: "var(--font-sans)",

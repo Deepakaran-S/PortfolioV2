@@ -1,4 +1,3 @@
-﻿import React from "react";
 
 /** Input — soft glass field; single-line or multiline message area, lime focus ring. */
 export function Input({

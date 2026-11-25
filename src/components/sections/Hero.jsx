@@ -1,10 +1,13 @@
-﻿import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Eyebrow, Button, Stat, Tile, Badge, Tag } from "../core";
+import FlowBackground from "./FlowBackground";
+import { PROFILE, HAS_RESUME, getExperience } from "../../data/profile";
 
-const ROLES = ["Full Stack Developer", "React Native Engineer", "FastAPI Architect", "SaaS Builder"];
+const ROLES = ["Multi-tenant SaaS builder", "ERP & backend engineer", "React Native developer", "FastAPI + React, end to end"];
 
 export default function Hero() {
   const [typed, setTyped] = useState("");
+  const exp = getExperience();
   const st = useRef({ role: 0, char: 0, dir: 1, pause: 0 });
 
   useEffect(() => {
@@ -32,13 +35,15 @@ export default function Hero() {
         <div style={{ position: "absolute", width: 300, height: 300, borderRadius: "50%", filter: "blur(70px)", opacity: "var(--mesh-opacity)", background: "var(--mesh-3)", top: 240, left: "44%" }} />
       </div>
 
+      <FlowBackground />
+
       <div style={{ position: "relative", zIndex: 2, maxWidth: "var(--measure)", margin: "0 auto", padding: "8.5rem 1.5rem 4rem", width: "100%" }}>
         <div className="bento-hero" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridAutoRows: "minmax(0, auto)", gap: "var(--bento-gap)" }}>
 
           {/* identity — wide */}
           <Tile span={2} align="between" style={{ minHeight: 280 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, flexWrap: "wrap" }}>
-              <Eyebrow rule>Deepakaran S — Portfolio 2025</Eyebrow>
+              <Eyebrow rule>{PROFILE.name} — Portfolio {new Date().getFullYear()}</Eyebrow>
               <Badge>Available for work</Badge>
             </div>
             <div>
@@ -54,6 +59,7 @@ export default function Hero() {
             <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
               <Button href="#projects">View projects</Button>
               <Button variant="secondary" href="#contact">Get in touch</Button>
+              {HAS_RESUME && <Button variant="ghost" href={PROFILE.resumeUrl} target="_blank" rel="noopener noreferrer">Resume ↓</Button>}
             </div>
           </Tile>
 
@@ -62,22 +68,24 @@ export default function Hero() {
             <div style={{ width: 60, height: 60, borderRadius: "var(--radius-md)", background: "var(--surface-ink)", color: "var(--on-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 24 }}>DS</div>
             <div>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", fontWeight: 700, color: "var(--ink-bright)", letterSpacing: "-0.02em" }}>Bangalore, IN</div>
-              <p style={{ fontSize: 13, color: "var(--ink-soft)", margin: "4px 0 0", lineHeight: 1.5 }}>Frontend Developer @ Sirpi Data Science</p>
+              <p style={{ fontSize: 13, color: "var(--ink-soft)", margin: "4px 0 0", lineHeight: 1.5 }}>Frontend Developer @ {PROFILE.company}</p>
             </div>
           </Tile>
 
           {/* stats */}
-          {[["8+", "months industry exp"], ["4+", "production apps shipped"], ["5+", "tech stacks"]].map(([n, l]) => (
+          {[[exp.figure, exp.label], ["10+", "production apps shipped"], ["5+", "tech stacks"]].map(([n, l]) => (
             <Tile key={l} align="center"><Stat figure={n} label={l} /></Tile>
           ))}
 
-          {/* lead paragraph — wide */}
-          <Tile span={3} style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap" }}>
-            <p style={{ maxWidth: 620, fontSize: 16, lineHeight: 1.6, color: "var(--ink-body)", margin: 0 }}>
-              I build production-grade web &amp; mobile apps — ERP systems, SaaS platforms, and backend services that real teams rely on every day.
+          <Tile span={3} style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", gap: 28, flexWrap: "wrap", padding: "var(--tile-pad-lg)" }}>
+            <p style={{ maxWidth: 600, fontSize: "clamp(1.05rem, 1.7vw, 1.3rem)", lineHeight: 1.5, letterSpacing: "-0.01em", color: "var(--ink-soft)", margin: 0 }}>
+              I build <strong style={{ color: "var(--ink-bright)", fontWeight: 600 }}>multi-tenant SaaS</strong>, <strong style={{ color: "var(--ink-bright)", fontWeight: 600 }}>ERP systems</strong> and <strong style={{ color: "var(--ink-bright)", fontWeight: 600 }}>mobile apps</strong> that real teams rely on every day.
             </p>
-            <div style={{ display: "flex", gap: 7, flexWrap: "wrap" }}>
-              <Tag>React</Tag><Tag>FastAPI</Tag><Tag>Node.js</Tag><Tag>PostgreSQL</Tag><Tag>React Native</Tag>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10, alignItems: "flex-start" }}>
+              <Eyebrow>Daily stack</Eyebrow>
+              <div style={{ display: "flex", gap: 7, flexWrap: "wrap", maxWidth: 380 }}>
+                <Tag>React</Tag><Tag>TypeScript</Tag><Tag>FastAPI</Tag><Tag>Node.js</Tag><Tag>PostgreSQL</Tag><Tag>React Native</Tag>
+              </div>
             </div>
           </Tile>
         </div>

@@ -1,4 +1,3 @@
-﻿import React from "react";
 
 /** Badge — status pill with a leading (glowing) dot. */
 export function Badge({

@@ -1,4 +1,4 @@
-﻿import React from "react";
+import { canUsePointerEffects } from "../../lib/motion";
 
 /**
  * Button — rounded action element.
@@ -77,6 +77,13 @@ export function Button({
         if (disabled) return;
         e.currentTarget.style.transform = "translateY(-2px)";
         e.currentTarget.style.filter = "brightness(1.04)";
+      }}
+      onMouseMove={(e) => {
+        if (disabled || !canUsePointerEffects()) return;
+        const r = e.currentTarget.getBoundingClientRect();
+        const dx = (e.clientX - (r.left + r.width / 2)) * 0.18;
+        const dy = (e.clientY - (r.top + r.height / 2)) * 0.25;
+        e.currentTarget.style.transform = `translate(${dx}px, ${dy - 2}px)`;
       }}
       onMouseLeave={(e) => {
         if (disabled) return;
