@@ -2,7 +2,7 @@ import { SectionHeading, Tile } from "../core";
 import { PROFILE, getExperience } from "../../data/profile";
 
 const FACTS = [
-  { label: "Current role", value: `Frontend Developer — ${PROFILE.company}, Bangalore` },
+  { label: "Current role", value: `Fullstack Developer — ${PROFILE.company}, Bangalore` },
   { label: "Education", value: "B.Tech Information Technology (2021–2025) — KSR College of Engineering, Namakkal" },
   { label: "Location", value: "Tamil Nadu, India" },
   { label: "Stack", value: "React · TypeScript · Node.js · FastAPI · PostgreSQL · MongoDB · React Native" },

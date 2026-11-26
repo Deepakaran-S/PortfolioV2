@@ -17,7 +17,7 @@ export default function Experience() {
               <div style={{ fontSize: 13, color: "var(--ink-muted)" }}>Bangalore</div>
             </div>
             <div>
-              <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.5rem", color: "var(--ink-bright)", fontWeight: 700, margin: "0 0 4px", letterSpacing: "-0.02em" }}>Frontend Developer</h3>
+              <h3 style={{ fontFamily: "var(--font-display)", fontSize: "1.5rem", color: "var(--ink-bright)", fontWeight: 700, margin: "0 0 4px", letterSpacing: "-0.02em" }}>Fullstack Developer</h3>
               <div style={{ fontSize: 14, color: "var(--accent)", marginBottom: "1.5rem", fontWeight: 600 }}>{PROFILE.company}</div>
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                 {HIGHLIGHTS.map((p, i) => (

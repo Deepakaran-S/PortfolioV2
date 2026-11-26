@@ -68,7 +68,7 @@ export default function Hero() {
             <div style={{ width: 60, height: 60, borderRadius: "var(--radius-md)", background: "var(--surface-ink)", color: "var(--on-ink)", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 24 }}>DS</div>
             <div>
               <div style={{ fontFamily: "var(--font-display)", fontSize: "1.25rem", fontWeight: 700, color: "var(--ink-bright)", letterSpacing: "-0.02em" }}>Bangalore, IN</div>
-              <p style={{ fontSize: 13, color: "var(--ink-soft)", margin: "4px 0 0", lineHeight: 1.5 }}>Frontend Developer @ {PROFILE.company}</p>
+              <p style={{ fontSize: 13, color: "var(--ink-soft)", margin: "4px 0 0", lineHeight: 1.5 }}>Fullstack Developer @ {PROFILE.company}</p>
             </div>
           </Tile>
 
