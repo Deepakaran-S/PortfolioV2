@@ -9,7 +9,6 @@ import Skills from "./components/sections/Skills";
 import Experience from "./components/sections/Experience";
 import Freelance from "./components/sections/Freelance";
 import Contact from "./components/sections/Contact";
-import EndCard from "./components/sections/EndCard";
 import RecruiterView from "./components/sections/RecruiterView";
 import CaseStudy from "./components/sections/CaseStudy";
 import Loader from "./components/layout/Loader";
@@ -79,7 +78,6 @@ export default function App() {
         )}
       </main>
       <Footer />
-      {!study && !recruiter && <EndCard />}
       <CommandPalette
         open={paletteOpen}
         onClose={() => setPaletteOpen(false)}
