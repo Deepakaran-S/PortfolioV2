@@ -86,7 +86,7 @@ export default function Freelance() {
             </div>
           </div>
         </a>
-
+ 
       </div>
     </section>
   );
